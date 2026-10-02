@@ -15,11 +15,11 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   title: {
-    default: "Lucid",
-    template: "%s — Lucid",
+    default: "Sylvester Kwabena Ahenkorah",
+    template: "%s — Sylvester Kwabena Ahenkorah",
   },
   description:
-    "Portfolio of Lucid — an emerging Applied AI Engineer and Machine Learning researcher building intelligent systems and software products.",
+    "Portfolio of Sylvester Kwabena Ahenkorah — an emerging Applied AI Engineer and Machine Learning researcher building intelligent systems and software products.",
 };
 
 export default function RootLayout({
