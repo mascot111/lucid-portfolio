@@ -827,8 +827,22 @@ code
 architecture
 ```
 
-Future types may be introduced.
+The block system should remain extensible for future research-oriented content.
 
+Likely future research block types may include:
+
+```text
+hypothesis
+dataset
+methodology
+model
+experiment
+evaluation
+benchmark
+results
+limitations
+citation
+paper
 Block type support belongs in application code.
 
 ---

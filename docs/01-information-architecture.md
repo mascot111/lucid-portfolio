@@ -255,15 +255,14 @@ Communicate areas of practical strength.
 
 Potential groups:
 
-- product engineering;
-- frontend systems;
-- backend systems;
-- AI / ML;
-- data;
-- systems thinking;
-- interaction design;
-- technical architecture.
-
+Applied AI
+Machine Learning
+Research & Experimentation
+Backend / Systems
+Data
+Product Engineering
+Frontend / Interaction
+Technical Architecture
 This is not intended to be a giant technology logo wall.
 
 ---
@@ -548,6 +547,26 @@ A lab item may contain:
 Some lab items may later link to their own pages.
 
 Dedicated lab-detail routes are not required for V1.
+
+The Lab is also the primary home for Lucid's emerging AI/ML and research practice.
+
+It should eventually support work such as:
+
+- machine-learning experiments;
+- model prototypes;
+- datasets;
+- evaluation studies;
+- inference experiments;
+- retrieval systems;
+- agents;
+- prediction systems;
+- notebooks converted into readable technical narratives;
+- paper reproductions;
+- benchmark investigations;
+- failed experiments with useful findings;
+- research questions still under investigation.
+
+The Lab should allow technical exploration to be visible before an idea becomes a polished portfolio project.
 
 ---
 

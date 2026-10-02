@@ -21,6 +21,34 @@ The public portfolio presents Lucid's projects, experiments, technical work, res
 The private admin system allows new content to be created, edited, organized, uploaded, drafted, published, and removed without manually editing application code.
 
 The portfolio must remain visually ambitious without sacrificing usability, accessibility, responsiveness, or performance.
+The portfolio also serves as the professional identity of an emerging Applied AI Engineer and Machine Learning researcher.
+
+Its project selection, visual hierarchy, technical storytelling, Lab content, and future research features should make this direction clear.
+
+The portfolio should demonstrate not only the ability to build software, but also increasing capability in:
+
+- machine learning;
+- applied artificial intelligence;
+- intelligent systems;
+- model-driven products;
+- data and experimentation;
+- research methodology;
+- evaluation;
+- backend and systems engineering required to deploy AI in real products.
+
+The identity should remain accurate to the current stage of development and must not imply credentials, experience, or research accomplishments that have not yet been earned.
+The portfolio is also the professional home of an emerging Applied AI Engineer and Machine Learning researcher.
+
+Its long-term identity should make Lucid's direction toward applied AI, machine learning, intelligent systems, and research unmistakable while remaining truthful about his current stage of development.
+
+The portfolio should demonstrate both sides of that trajectory:
+
+- the engineering ability required to build and deploy real software systems;
+- the growing AI/ML and research capability required to make those systems intelligent.
+
+Software engineering, product engineering, frontend, backend, and systems work are therefore not separate from the AI identity. They form part of the technical foundation behind it.
+
+The portfolio must never imply credentials, research accomplishments, professional experience, or technical mastery that have not yet been earned.
 
 ---
 
@@ -39,8 +67,9 @@ The portfolio must:
 - degrade gracefully on weaker devices;
 - remain usable when advanced effects are unavailable;
 - support future expansion without requiring a structural rewrite.
-
----
+- establish a credible professional trajectory toward Applied AI Engineering and Machine Learning research;
+- provide a permanent home for future ML models, AI systems, experiments, benchmarks, datasets, research investigations, and technical findings;
+- show the engineering ability required to move AI systems beyond notebooks and into useful real-world products;---
 
 # 3. Product Principles
 
@@ -59,8 +88,21 @@ The website may use:
 - parallax;
 - depth effects;
 - cinematic transitions.
+The site should visually communicate technical depth and emerging AI/research orientation without relying on generic AI imagery such as glowing brains, neural-network stock graphics, or excessive futuristic symbolism.
 
 These effects must support the experience rather than compete with the content.
+The visual identity should suggest intelligence, experimentation, technical depth, and research discipline without relying on generic AI imagery.
+
+Avoid visual clichés such as:
+
+- glowing AI brains;
+- generic neural-network graphics;
+- random node-and-line backgrounds;
+- humanoid robots;
+- excessive cyberpunk imagery;
+- meaningless futuristic HUD elements.
+
+The AI/ML identity should emerge primarily through the work, research artifacts, technical storytelling, data, experiments, systems, and interaction design.
 
 ---
 
