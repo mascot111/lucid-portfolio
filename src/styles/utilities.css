@@ -1,0 +1,51 @@
+.page-container {
+  width: min(
+    calc(100% - (var(--page-padding) * 2)),
+    var(--content-max)
+  );
+  margin-inline: auto;
+}
+
+.content-narrow {
+  width: min(100%, var(--content-narrow));
+  margin-inline: auto;
+}
+
+.content-standard {
+  width: min(100%, var(--content-standard));
+  margin-inline: auto;
+}
+
+.content-wide {
+  width: min(100%, var(--content-wide));
+  margin-inline: auto;
+}
+
+.text-secondary {
+  color: var(--text-secondary);
+}
+
+.text-muted {
+  color: var(--text-muted);
+}
+
+.text-accent {
+  color: var(--accent-primary);
+}
+
+.surface-elevated {
+  background: var(--background-elevated);
+  border: 1px solid var(--border-subtle);
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}

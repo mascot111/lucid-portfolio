@@ -1,0 +1,176 @@
+:root {
+  /* -------------------------------------------------------
+   * COLOR — BASE
+   * ----------------------------------------------------- */
+
+  --color-black: #050505;
+  --color-black-soft: #090909;
+  --color-charcoal: #0d0d0e;
+  --color-charcoal-elevated: #121214;
+
+  --color-white: #f4f4f2;
+  --color-white-soft: #e8e8e5;
+
+  --color-gray-100: #d4d4d0;
+  --color-gray-200: #b3b3af;
+  --color-gray-300: #8e8e8a;
+  --color-gray-400: #686865;
+  --color-gray-500: #454542;
+
+  /* -------------------------------------------------------
+   * SEMANTIC COLOR
+   * ----------------------------------------------------- */
+
+  --background-base: var(--color-black);
+  --background-soft: var(--color-black-soft);
+  --background-elevated: var(--color-charcoal-elevated);
+
+  --text-primary: var(--color-white);
+  --text-secondary: var(--color-gray-200);
+  --text-muted: var(--color-gray-300);
+  --text-faint: var(--color-gray-400);
+
+  --border-subtle: rgba(255, 255, 255, 0.08);
+  --border-medium: rgba(255, 255, 255, 0.14);
+  --border-strong: rgba(255, 255, 255, 0.22);
+
+  /* -------------------------------------------------------
+   * ACCENT
+   *
+   * Intentionally restrained for now.
+   * We will tune this once the visual identity is stronger.
+   * ----------------------------------------------------- */
+
+  --accent-primary: #9ba8ff;
+  --accent-primary-soft: rgba(155, 168, 255, 0.14);
+  --accent-secondary: #d8d1ff;
+
+  /* -------------------------------------------------------
+   * STATUS
+   * ----------------------------------------------------- */
+
+  --color-success: #7fc89b;
+  --color-warning: #ddb96f;
+  --color-danger: #dd8585;
+
+  /* -------------------------------------------------------
+   * SPACING
+   * ----------------------------------------------------- */
+
+  --space-1: 0.25rem;
+  --space-2: 0.5rem;
+  --space-3: 0.75rem;
+  --space-4: 1rem;
+  --space-5: 1.25rem;
+  --space-6: 1.5rem;
+  --space-8: 2rem;
+  --space-10: 2.5rem;
+  --space-12: 3rem;
+  --space-16: 4rem;
+  --space-20: 5rem;
+  --space-24: 6rem;
+  --space-32: 8rem;
+
+  /* -------------------------------------------------------
+   * PAGE / CONTAINER
+   * ----------------------------------------------------- */
+
+  --page-padding: 1rem;
+
+  --content-narrow: 45rem;
+  --content-standard: 70rem;
+  --content-wide: 90rem;
+  --content-max: 108rem;
+
+  /* -------------------------------------------------------
+   * RADIUS
+   * ----------------------------------------------------- */
+
+  --radius-sm: 0.5rem;
+  --radius-md: 0.875rem;
+  --radius-lg: 1.25rem;
+  --radius-xl: 1.75rem;
+  --radius-2xl: 2.5rem;
+  --radius-pill: 999rem;
+
+  /* -------------------------------------------------------
+   * SHADOW
+   * ----------------------------------------------------- */
+
+  --shadow-soft:
+    0 1px 2px rgba(0, 0, 0, 0.18),
+    0 12px 40px rgba(0, 0, 0, 0.18);
+
+  --shadow-elevated:
+    0 1px 2px rgba(0, 0, 0, 0.2),
+    0 24px 80px rgba(0, 0, 0, 0.3);
+
+  /* -------------------------------------------------------
+   * BLUR
+   * ----------------------------------------------------- */
+
+  --blur-sm: 8px;
+  --blur-md: 18px;
+  --blur-lg: 32px;
+  --blur-xl: 48px;
+
+  /* -------------------------------------------------------
+   * Z-INDEX
+   * ----------------------------------------------------- */
+
+  --z-background: 0;
+  --z-scene: 10;
+  --z-content: 20;
+  --z-glass: 30;
+  --z-navigation: 50;
+  --z-overlay: 80;
+  --z-modal: 100;
+
+  /* -------------------------------------------------------
+   * MOTION
+   * ----------------------------------------------------- */
+
+  --duration-instant: 100ms;
+  --duration-fast: 180ms;
+  --duration-standard: 320ms;
+  --duration-slow: 600ms;
+  --duration-cinematic: 1100ms;
+
+  --ease-standard: cubic-bezier(0.22, 1, 0.36, 1);
+  --ease-enter: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-exit: cubic-bezier(0.7, 0, 0.84, 0);
+}
+
+/* ---------------------------------------------------------
+ * RESPONSIVE TOKENS
+ * ------------------------------------------------------- */
+
+@media (min-width: 480px) {
+  :root {
+    --page-padding: 1.25rem;
+  }
+}
+
+@media (min-width: 768px) {
+  :root {
+    --page-padding: 2rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  :root {
+    --page-padding: 3rem;
+  }
+}
+
+@media (min-width: 1280px) {
+  :root {
+    --page-padding: 4rem;
+  }
+}
+
+@media (min-width: 1536px) {
+  :root {
+    --page-padding: 5rem;
+  }
+}
