@@ -1,0 +1,243 @@
+/* =========================================================
+ * LIQUID GLASS MATERIAL SYSTEM
+ * ======================================================= */
+
+.liquid-glass {
+  position: relative;
+
+  isolation: isolate;
+
+  overflow: hidden;
+
+  border: 1px solid rgba(255, 255, 255, 0.42);
+
+  background:
+    linear-gradient(
+      180deg,
+      rgba(255, 255, 255, 0.3),
+      rgba(255, 255, 255, 0.08)
+    ),
+    rgba(247, 242, 233, 0.44);
+
+  box-shadow:
+    0 12px 36px rgba(24, 23, 21, 0.1),
+    inset 0 1px rgba(255, 255, 255, 0.85),
+    inset 0 -1px rgba(24, 23, 21, 0.05);
+
+  backdrop-filter:
+    blur(24px)
+    saturate(135%)
+    brightness(1.04);
+
+  -webkit-backdrop-filter:
+    blur(24px)
+    saturate(135%)
+    brightness(1.04);
+}
+
+/* ---------------------------------------------------------
+ * OPTICAL HIGHLIGHT
+ * ------------------------------------------------------- */
+
+.liquid-glass::before {
+  content: "";
+
+  position: absolute;
+  inset: 0;
+
+  z-index: 0;
+
+  pointer-events: none;
+
+  background:
+    linear-gradient(
+      110deg,
+      rgba(255, 255, 255, 0.34) 0%,
+      rgba(255, 255, 255, 0.11) 18%,
+      transparent 40%,
+      transparent 70%,
+      rgba(255, 255, 255, 0.08) 100%
+    );
+
+  opacity: 0.9;
+}
+
+.liquid-glass::after {
+  content: "";
+
+  position: absolute;
+
+  top: 0;
+  left: 10%;
+  right: 10%;
+
+  z-index: 0;
+
+  height: 1px;
+
+  pointer-events: none;
+
+  background:
+    linear-gradient(
+      90deg,
+      transparent,
+      rgba(255, 255, 255, 0.95),
+      transparent
+    );
+
+  opacity: 0.9;
+}
+
+.liquid-glass > * {
+  position: relative;
+
+  z-index: 1;
+}
+
+/* ---------------------------------------------------------
+ * NAVIGATION VARIANTS
+ * ------------------------------------------------------- */
+
+.desktop-nav__inner.liquid-glass,
+.mobile-nav__dock.liquid-glass,
+.mobile-nav__more-menu.liquid-glass {
+  color: var(--text-primary);
+}
+
+/*
+ * Mobile controls need slightly more opacity because
+ * they regularly cross both Sheet and Ink surfaces.
+ */
+
+.mobile-nav__dock.liquid-glass {
+  background:
+    linear-gradient(
+      180deg,
+      rgba(255, 255, 255, 0.34),
+      rgba(255, 255, 255, 0.11)
+    ),
+    rgba(247, 242, 233, 0.58);
+}
+
+.mobile-nav__more-menu.liquid-glass {
+  background:
+    linear-gradient(
+      180deg,
+      rgba(255, 255, 255, 0.38),
+      rgba(255, 255, 255, 0.12)
+    ),
+    rgba(247, 242, 233, 0.68);
+
+  box-shadow:
+    0 18px 48px rgba(24, 23, 21, 0.16),
+    inset 0 1px rgba(255, 255, 255, 0.88);
+}
+
+/* ---------------------------------------------------------
+ * REUSABLE COMPONENTS
+ * ------------------------------------------------------- */
+
+.liquid-glass-card {
+  padding: var(--space-8);
+
+  border-radius: var(--radius-xl);
+}
+
+.liquid-glass-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  gap: var(--space-3);
+
+  width: fit-content;
+
+  padding:
+    0.72rem
+    1rem;
+
+  border-radius: var(--radius-pill);
+
+  color: var(--text-primary);
+
+  font-size: var(--text-body-sm);
+
+  cursor: pointer;
+
+  transition:
+    transform var(--duration-fast) var(--ease-standard),
+    box-shadow var(--duration-standard) var(--ease-standard),
+    border-color var(--duration-standard) var(--ease-standard);
+}
+
+/* ---------------------------------------------------------
+ * POINTER INTERACTION
+ * ------------------------------------------------------- */
+
+@media (hover: hover) and (pointer: fine) {
+  .desktop-nav__inner.liquid-glass {
+    transition:
+      background var(--duration-standard) var(--ease-standard),
+      border-color var(--duration-standard) var(--ease-standard),
+      box-shadow var(--duration-standard) var(--ease-standard);
+  }
+
+  .desktop-nav__inner.liquid-glass:hover {
+    border-color: rgba(255, 255, 255, 0.56);
+
+    box-shadow:
+      0 14px 44px rgba(24, 23, 21, 0.12),
+      inset 0 1px rgba(255, 255, 255, 0.94),
+      inset 0 -1px rgba(24, 23, 21, 0.05);
+  }
+
+  .liquid-glass-button:hover {
+    transform: translateY(-1px);
+
+    border-color: rgba(255, 255, 255, 0.58);
+
+    box-shadow:
+      0 14px 38px rgba(24, 23, 21, 0.12),
+      inset 0 1px rgba(255, 255, 255, 0.9);
+  }
+}
+
+.liquid-glass-button:active {
+  transform: scale(0.98);
+}
+
+/* ---------------------------------------------------------
+ * NO BACKDROP FILTER FALLBACK
+ * ------------------------------------------------------- */
+
+@supports not (
+  (backdrop-filter: blur(1px)) or
+  (-webkit-backdrop-filter: blur(1px))
+) {
+  .liquid-glass,
+  .desktop-nav__inner.liquid-glass,
+  .mobile-nav__dock.liquid-glass,
+  .mobile-nav__more-menu.liquid-glass {
+    background: rgba(247, 242, 233, 0.96);
+  }
+}
+
+/* ---------------------------------------------------------
+ * REDUCED MOTION
+ * ------------------------------------------------------- */
+
+@media (prefers-reduced-motion: reduce) {
+  .liquid-glass {
+    backdrop-filter: blur(18px);
+    -webkit-backdrop-filter: blur(18px);
+  }
+
+  .liquid-glass-button {
+    transition: none;
+  }
+
+  .liquid-glass-button:hover,
+  .liquid-glass-button:active {
+    transform: none;
+  }
+}

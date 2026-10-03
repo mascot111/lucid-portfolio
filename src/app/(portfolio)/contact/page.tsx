@@ -177,7 +177,7 @@ export default function ContactPage() {
             </p>
 
             <a
-              href="mailto:mascotahenkorah192@gamail.com"
+              href="mailto:mascotahenkorah192@gmail.com"
               className="contact-closing__link"
             >
               Send an email

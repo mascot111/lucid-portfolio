@@ -1,0 +1,118 @@
+/* =========================================================
+ * MOTION FOUNDATION
+ * ======================================================= */
+
+/*
+ * Important:
+ * Reveal content is readable by default.
+ *
+ * It only becomes hidden/animated after React has mounted
+ * and added .is-enhanced.
+ */
+
+.motion-reveal {
+  --motion-delay: 0ms;
+
+  opacity: 1;
+  transform: none;
+}
+
+/* ---------------------------------------------------------
+ * ENHANCED STATE
+ * ------------------------------------------------------- */
+
+.motion-reveal.is-enhanced {
+  transition:
+    opacity var(--duration-slow) var(--ease-enter),
+    transform var(--duration-slow) var(--ease-enter);
+
+  transition-delay: var(--motion-delay);
+}
+
+/*
+ * Only enhanced elements waiting for their reveal
+ * are hidden.
+ */
+
+.motion-reveal.is-enhanced:not(.is-visible) {
+  opacity: 0;
+
+  will-change: opacity, transform;
+}
+
+/* ---------------------------------------------------------
+ * DIRECTIONS
+ * ------------------------------------------------------- */
+
+.motion-reveal--up.is-enhanced:not(.is-visible) {
+  transform: translate3d(0, 1.5rem, 0);
+}
+
+.motion-reveal--down.is-enhanced:not(.is-visible) {
+  transform: translate3d(0, -1.5rem, 0);
+}
+
+.motion-reveal--left.is-enhanced:not(.is-visible) {
+  transform: translate3d(1.5rem, 0, 0);
+}
+
+.motion-reveal--right.is-enhanced:not(.is-visible) {
+  transform: translate3d(-1.5rem, 0, 0);
+}
+
+.motion-reveal--none.is-enhanced:not(.is-visible) {
+  transform: none;
+}
+
+/* ---------------------------------------------------------
+ * VISIBLE
+ * ------------------------------------------------------- */
+
+.motion-reveal.is-visible {
+  opacity: 1;
+
+  transform: translate3d(0, 0, 0);
+
+  /*
+   * Stop reserving compositor resources once
+   * the reveal has completed.
+   */
+  will-change: auto;
+}
+
+/* ---------------------------------------------------------
+ * HERO TUNING
+ * ------------------------------------------------------- */
+
+.home-hero .motion-reveal {
+  transition-duration: var(--duration-cinematic);
+}
+
+.home-hero__meta .motion-reveal {
+  transition-duration: var(--duration-slow);
+}
+
+.home-hero__meta .motion-reveal > span {
+  display: inline-block;
+}
+
+/* ---------------------------------------------------------
+ * REDUCED MOTION
+ * ------------------------------------------------------- */
+
+@media (prefers-reduced-motion: reduce) {
+  .motion-reveal,
+  .motion-reveal.is-enhanced,
+  .motion-reveal.is-enhanced:not(.is-visible),
+  .motion-reveal.is-visible {
+    opacity: 1;
+
+    transform: none;
+
+    transition: none;
+
+    transition-delay: 0ms;
+
+    will-change: auto;
+  }
+}

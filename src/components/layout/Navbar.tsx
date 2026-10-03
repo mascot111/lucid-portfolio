@@ -18,7 +18,7 @@ export function Navbar() {
 
   return (
     <header className="desktop-nav" aria-label="Primary navigation">
-      <div className="desktop-nav__inner">
+      <div className="desktop-nav__inner liquid-glass">
         <Link href="/" className="desktop-nav__identity">
           LUCID
         </Link>

@@ -14,10 +14,17 @@ export default function PortfolioLayout({
 }: PortfolioLayoutProps) {
   return (
     <PageShell>
+        <a href="#main-content" className="skip-link">
+  Skip to content
+</a>
       <Navbar />
       <MobileNav />
 
-      <div className="portfolio-content">
+     <div
+  id="main-content"
+  className="portfolio-content"
+  tabIndex={-1}
+>
         {children}
       </div>
 
