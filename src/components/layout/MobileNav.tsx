@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 function isActiveRoute(pathname: string, href: string) {
   if (href === "/") {
@@ -21,24 +21,40 @@ const dockItems = [
 
 export function MobileNav() {
   const pathname = usePathname();
-  const [moreOpen, setMoreOpen] = useState(false);
+  const [openPath, setOpenPath] = useState<string | null>(null);
+  const moreOpen = openPath === pathname;
+  const moreRef = useRef<HTMLButtonElement>(null);
+  const menuRef = useRef<HTMLDivElement>(null);
+  const closeMenu = () => setOpenPath(null);
   useEffect(() => {
-  if (!moreOpen) {
-    return;
-  }
-
-  function handleKeyDown(event: KeyboardEvent) {
-    if (event.key === "Escape") {
-      setMoreOpen(false);
+    if (!moreOpen) {
+      return;
     }
-  }
 
-  window.addEventListener("keydown", handleKeyDown);
+    function handleKeyDown(event: KeyboardEvent) {
+      if (event.key === "Escape") {
+        setOpenPath(null);
+        moreRef.current?.focus();
+      }
+    }
 
-  return () => {
-    window.removeEventListener("keydown", handleKeyDown);
-  };
-}, [moreOpen]);
+    function handleOutside(event: PointerEvent | FocusEvent) {
+      const target = event.target as Node;
+      if (!menuRef.current?.contains(target) && !moreRef.current?.contains(target)) {
+        setOpenPath(null);
+      }
+    }
+
+    window.addEventListener("keydown", handleKeyDown);
+    document.addEventListener("pointerdown", handleOutside);
+    document.addEventListener("focusin", handleOutside);
+
+    return () => {
+      window.removeEventListener("keydown", handleKeyDown);
+      document.removeEventListener("pointerdown", handleOutside);
+      document.removeEventListener("focusin", handleOutside);
+    };
+  }, [moreOpen]);
 
   const moreActive =
     isActiveRoute(pathname, "/about") ||
@@ -53,7 +69,7 @@ export function MobileNav() {
       </header>
 
       <nav
-  className="mobile-nav__dock liquid-glass"
+        className="mobile-nav__dock liquid-glass"
         aria-label="Mobile navigation"
       >
         {dockItems.map((item) => {
@@ -66,7 +82,7 @@ export function MobileNav() {
               className="mobile-nav__item"
               data-active={active || undefined}
               aria-current={active ? "page" : undefined}
-              onClick={() => setMoreOpen(false)}
+              onClick={closeMenu}
             >
               {item.label}
             </Link>
@@ -74,26 +90,32 @@ export function MobileNav() {
         })}
 
         <button
+          ref={moreRef}
           type="button"
           className="mobile-nav__item mobile-nav__more"
           data-active={moreActive || moreOpen || undefined}
           aria-expanded={moreOpen}
           aria-controls="mobile-more-menu"
-          onClick={() => setMoreOpen((open) => !open)}
+          onClick={() => setOpenPath(moreOpen ? null : pathname)}
         >
           More
         </button>
       </nav>
 
       <div
+        ref={menuRef}
+        inert={!moreOpen}
         id="mobile-more-menu"
+        role="navigation"
+        aria-label="More navigation"
         className="mobile-nav__more-menu liquid-glass"
         data-open={moreOpen || undefined}
       >
         <Link
           href="/about"
+          aria-current={isActiveRoute(pathname, "/about") ? "page" : undefined}
           data-active={isActiveRoute(pathname, "/about") || undefined}
-          onClick={() => setMoreOpen(false)}
+          onClick={closeMenu}
         >
           <span>About</span>
           <span aria-hidden="true">↗</span>
@@ -101,8 +123,9 @@ export function MobileNav() {
 
         <Link
           href="/contact"
+          aria-current={isActiveRoute(pathname, "/contact") ? "page" : undefined}
           data-active={isActiveRoute(pathname, "/contact") || undefined}
-          onClick={() => setMoreOpen(false)}
+          onClick={closeMenu}
         >
           <span>Contact</span>
           <span aria-hidden="true">↗</span>

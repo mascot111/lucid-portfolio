@@ -1,5 +1,7 @@
 import type { ReactNode } from "react";
 
+import { InteractiveSheetField } from "@/components/sheet/InteractiveSheetField";
+
 type PageShellProps = {
   children: ReactNode;
   className?: string;
@@ -11,19 +13,16 @@ export function PageShell({
 }: PageShellProps) {
   return (
     <div className={`page-shell ${className}`.trim()}>
-      <div
-        className="folio-registration folio-registration--top"
-        aria-hidden="true"
-      >
-        <span>SYL / 26</span>
-        <span>PORTFOLIO SYSTEM</span>
-      </div>
+      <InteractiveSheetField />
 
+     
       <div
         className="folio-registration folio-registration--side"
         aria-hidden="true"
       >
-        <span>APPLIED INTELLIGENCE / SYSTEMS / RESEARCH</span>
+        <span>
+          APPLIED INTELLIGENCE / SYSTEMS / RESEARCH
+        </span>
       </div>
 
       {children}

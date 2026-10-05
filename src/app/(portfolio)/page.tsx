@@ -8,21 +8,21 @@ import { Reveal } from "@/components/motion/Reveal";
 
 export default function HomePage() {
   return (
-    
+
     <main>
       <Hero />
 
-      <Reveal amount={0.1}>
+
         <Intro />
-      </Reveal>
 
-      <Reveal amount={0.08}>
+
+
         <FeaturedWork />
-      </Reveal>
 
-      <Reveal amount={0.1}>
+
+
         <CurrentFocus />
-      </Reveal>
+
 
       <Reveal amount={0.08}>
         <Capabilities />

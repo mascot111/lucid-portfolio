@@ -30,7 +30,7 @@
 }
 
 .text-accent {
-  color: var(--accent-primary);
+  color: var(--accent-text);
 }
 
 .surface-elevated {

@@ -1,0 +1,346 @@
+.about-growth {
+  padding-top:
+    clamp(5rem, 10vw, 9rem);
+
+  padding-bottom:
+    clamp(6rem, 12vw, 11rem);
+}
+
+.about-growth__header {
+  display: grid;
+
+  grid-template-columns:
+    minmax(0, 0.72fr)
+    minmax(0, 1.28fr);
+
+  gap:
+    clamp(2rem, 6vw, 7rem);
+
+  align-items: end;
+
+  margin-bottom:
+    clamp(3.5rem, 7vw, 6.5rem);
+}
+
+.about-growth__intro {
+  display: grid;
+  gap: 1rem;
+
+  max-width: 42rem;
+}
+
+.about-growth__intro h2 {
+  margin: 0;
+
+  font-family:
+    var(--font-display);
+
+  font-size:
+    clamp(2.8rem, 6vw, 5.6rem);
+
+  font-weight: 450;
+
+  line-height: 0.96;
+
+  letter-spacing:
+    -0.055em;
+}
+
+.about-growth__intro p {
+  margin: 0;
+
+  max-width: 34rem;
+
+  color:
+    var(--text-secondary);
+
+  font-size:
+    clamp(0.95rem, 1.4vw, 1.08rem);
+
+  line-height: 1.65;
+}
+
+
+/* =========================================================
+ * RECORDS
+ * ======================================================= */
+
+.about-growth__records {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  border-top:
+    1px solid
+    rgba(24, 23, 21, 0.16);
+}
+
+.about-growth__record {
+  display: grid;
+
+  grid-template-columns:
+    minmax(7rem, 0.34fr)
+    minmax(0, 1fr);
+
+  gap:
+    clamp(1.75rem, 5vw, 5rem);
+
+  padding:
+    clamp(2rem, 5vw, 3.7rem)
+    0;
+
+  border-bottom:
+    1px solid
+    rgba(24, 23, 21, 0.14);
+}
+
+.about-growth__rail {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  gap: 2rem;
+}
+
+.about-growth__index,
+.about-growth__signal,
+.about-growth__label {
+  font-family:
+    var(--font-mono);
+
+  letter-spacing:
+    0.1em;
+
+  text-transform:
+    uppercase;
+}
+
+.about-growth__index {
+  color:
+    var(--text-secondary);
+
+  font-size: 0.72rem;
+}
+
+.about-growth__signal {
+  width: fit-content;
+
+  padding:
+    0.32rem
+    0.45rem;
+
+  border:
+    1px solid
+    rgba(111, 125, 255, 0.24);
+
+  color:
+    var(--accent-text);
+
+  background:
+    rgba(111, 125, 255, 0.035);
+
+  font-size: 0.68rem;
+}
+
+.about-growth__content {
+  display: grid;
+  gap: 1rem;
+
+  max-width: 48rem;
+}
+
+.about-growth__label {
+  color:
+    var(--accent-research);
+
+  font-size: 0.7rem;
+}
+
+.about-growth__content h3 {
+  margin: 0;
+
+  max-width: 18ch;
+
+  font-family:
+    var(--font-display);
+
+  font-size:
+    clamp(1.7rem, 3vw, 2.75rem);
+
+  font-weight: 450;
+
+  line-height: 1;
+
+  letter-spacing:
+    -0.04em;
+}
+
+.about-growth__content p {
+  margin: 0;
+
+  max-width: 43rem;
+
+  color:
+    var(--text-secondary);
+
+  font-size:
+    clamp(0.92rem, 1.3vw, 1rem);
+
+  line-height: 1.7;
+}
+
+.about-growth__lesson {
+  margin-top: 0.4rem !important;
+
+  padding-left: 1rem;
+
+  border-left:
+    2px solid
+    rgba(166, 69, 60, 0.52);
+
+  color:
+    var(--text-primary) !important;
+
+  font-family:
+    var(--font-mono);
+
+  font-size:
+    0.78rem !important;
+
+  letter-spacing:
+    0.02em;
+}
+
+
+/* =========================================================
+ * HOVER — DESKTOP ONLY
+ * ======================================================= */
+
+@media (hover: hover) and (pointer: fine) {
+  .about-growth__record {
+    transition:
+      padding-left 500ms
+      cubic-bezier(0.16, 1, 0.3, 1),
+      background-color 500ms
+      cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .about-growth__record:hover {
+    padding-left: 0.75rem;
+
+    background:
+      rgba(247, 242, 233, 0.18);
+  }
+}
+
+
+/* =========================================================
+ * MOBILE
+ * ======================================================= */
+
+@media (max-width: 767px) {
+  .about-growth__header {
+    grid-template-columns: 1fr;
+    gap: 2.25rem;
+  }
+
+  .about-growth__record {
+    grid-template-columns: 1fr;
+
+    gap: 1.5rem;
+
+    padding:
+      2.3rem
+      0;
+  }
+
+  .about-growth__rail {
+    flex-direction: row;
+
+    justify-content:
+      space-between;
+
+    align-items: center;
+
+    gap: 1rem;
+  }
+
+  .about-growth__content h3 {
+    max-width: none;
+  }
+}
+
+
+/* =========================================================
+ * REDUCED MOTION
+ * ======================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+  .about-growth__record {
+    transition: none;
+  }
+
+  .about-growth__record:hover {
+    padding-left: 0;
+  }
+}
+
+/* A narrow annotation lane keeps the traced progression clear of the copy. */
+.about-growth__record {
+  --record-gap: clamp(1.75rem, 5vw, 5rem);
+  position: relative;
+  gap: var(--record-gap);
+}
+.about-growth__trail {
+  position: absolute;
+  top: 0;
+  bottom: -1px;
+  left: max(7rem, calc((100% - var(--record-gap)) * 0.34 / 1.34));
+  width: var(--record-gap);
+  color: #8d625b;
+  pointer-events: none;
+  user-select: none;
+}
+.about-growth__trail svg { display: block; width: 100%; height: 100%; overflow: hidden; }
+.about-growth__route {
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.1px;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  vector-effect: non-scaling-stroke;
+  opacity: 0.65;
+}
+.about-growth__note {
+  position: absolute;
+  top: 36%;
+  left: 50%;
+  transform: translateX(-50%) rotate(-5deg);
+  padding: 0.25rem 0;
+  background: var(--sheet-base);
+  white-space: nowrap;
+  font: italic 0.6rem var(--font-mono);
+  letter-spacing: -0.04em;
+}
+.about-growth__record:nth-child(2) { --trail-delay: 1400ms; }
+.about-growth__record:nth-child(3) { --trail-delay: 2800ms; }
+.about-growth__record:nth-child(4) { --trail-delay: 4200ms; }
+.about-growth__record:nth-child(5) { --trail-delay: 5600ms; }
+@media (prefers-reduced-motion: no-preference) {
+  [data-trail="ready"] .about-growth__draw { stroke-dasharray: 1; stroke-dashoffset: 1; }
+  [data-trail="draw"] .about-growth__draw {
+    stroke-dasharray: 1;
+    animation: growth-trace 1400ms cubic-bezier(0.37, 0, 0.63, 1) var(--trail-delay, 0ms) both;
+  }
+  @keyframes growth-trace {
+    from { stroke-dashoffset: 1; }
+    to { stroke-dashoffset: 0; }
+  }
+}
+@media (max-width: 1023px) {
+  .about-growth__note { display: none; }
+}
+@media (max-width: 767px) {
+  .about-growth__record { padding-left: 1.5rem; gap: 1.5rem; }
+  .about-growth__trail { left: 0; width: 0.9rem; }
+  .about-growth__record:hover { padding-left: 1.5rem; }
+}

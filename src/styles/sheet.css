@@ -1,0 +1,477 @@
+/* =========================================================
+ * SHEET SYSTEM
+ *
+ * Premium technical / research folio surface.
+ *
+ * Sheet owns:
+ * - paper surface
+ * - horizontal ruling
+ * - faint structural columns
+ * - research margin
+ * - microscopic grain
+ * - subtle print character
+ *
+ * Sheet DOES NOT own component text colours.
+ * ======================================================= */
+
+
+/* =========================================================
+ * TOKENS
+ * ======================================================= */
+
+:root {
+    --sheet-pointer-x: 50vw;
+--sheet-pointer-y: 50vh;
+--sheet-pointer-opacity: 0;
+
+--sheet-field-radius: 11rem;
+
+--sheet-field-line: rgba(111, 125, 255, 0.15);
+--sheet-field-glow: rgba(111, 125, 255, 0.055);
+  --sheet-rule-spacing: 1.75rem;
+  --sheet-column-spacing: 6rem;
+
+  --sheet-rule-color: rgba(54, 50, 44, 0.1);
+  --sheet-column-color: rgba(54, 50, 44, 0.026);
+
+  --sheet-margin-offset: 4.75rem;
+  --sheet-margin-color: rgba(166, 69, 60, 0.27);
+
+  --sheet-paper: var(--sheet-base, #e9e2d3);
+}
+
+
+/* =========================================================
+ * BASE SHEET
+ *
+ * IMPORTANT:
+ * The ruling is built from repeating background tiles.
+ * This keeps every line equally strong across the surface.
+ * ======================================================= */
+
+.page-shell {
+  position: relative;
+
+  background-color: var(--sheet-paper) !important;
+
+  background-image:
+    /* red research margin */
+    linear-gradient(
+      to right,
+      transparent 0,
+      transparent var(--sheet-margin-offset),
+      var(--sheet-margin-color) var(--sheet-margin-offset),
+      var(--sheet-margin-color) calc(var(--sheet-margin-offset) + 1px),
+      transparent calc(var(--sheet-margin-offset) + 1px)
+    ),
+
+    /* horizontal ruled line */
+    linear-gradient(
+      to bottom,
+      transparent calc(100% - 1px),
+      var(--sheet-rule-color) calc(100% - 1px),
+      var(--sheet-rule-color) 100%
+    ),
+
+    /* vertical structural line */
+    linear-gradient(
+      to right,
+      transparent calc(100% - 1px),
+      var(--sheet-column-color) calc(100% - 1px),
+      var(--sheet-column-color) 100%
+    ) !important;
+
+  background-size:
+    100% 100%,
+    100% var(--sheet-rule-spacing),
+    var(--sheet-column-spacing) 100% !important;
+
+  background-repeat:
+    no-repeat,
+    repeat,
+    repeat !important;
+
+  background-position:
+    0 0,
+    0 0,
+    0 0 !important;
+}
+
+/* =========================================================
+ * INTERACTIVE SHEET FIELD
+ *
+ * A faint computational response embedded into the folio.
+ * Only active for fine-pointer devices.
+ * ======================================================= */
+/* =========================================================
+ * INTERACTIVE GRID SPOTLIGHT
+ *
+ * The static Sheet remains visible everywhere.
+ * Around the pointer, its structure becomes sharper,
+ * colder and more computational.
+ * ======================================================= */
+
+.page-shell::before {
+  content: "";
+
+  position: absolute;
+  inset: 0;
+
+  z-index: 0;
+
+  pointer-events: none;
+
+  opacity:
+    var(--sheet-pointer-opacity);
+
+  background-image:
+    /*
+     * Very light environmental field.
+     * This is not intended to look like
+     * a glowing flashlight.
+     */
+    radial-gradient(
+      circle var(--sheet-field-radius)
+        at
+        var(--sheet-pointer-x)
+        var(--sheet-pointer-y),
+      var(--sheet-field-glow) 0,
+      rgba(111, 125, 255, 0.035) 38%,
+      transparent 74%
+    ),
+
+    /*
+     * Stronger horizontal ruling.
+     */
+    linear-gradient(
+      to bottom,
+      transparent calc(100% - 1px),
+      var(--sheet-field-line)
+        calc(100% - 1px),
+      var(--sheet-field-line) 100%
+    ),
+
+    /*
+     * Technical column structure.
+     */
+    linear-gradient(
+      to right,
+      transparent calc(100% - 1px),
+      var(--sheet-field-column)
+        calc(100% - 1px),
+      var(--sheet-field-column) 100%
+    );
+
+  background-size:
+    100% 100%,
+    100% var(--sheet-rule-spacing),
+    var(--sheet-column-spacing) 100%;
+
+  background-repeat:
+    no-repeat,
+    repeat,
+    repeat;
+
+  background-position:
+    0 0,
+    0 0,
+    0 0;
+
+  /*
+   * Restrict enhanced grid structure to the
+   * active scanning radius.
+   */
+
+  -webkit-mask-image:
+    radial-gradient(
+      circle var(--sheet-field-radius)
+        at
+        var(--sheet-pointer-x)
+        var(--sheet-pointer-y),
+      #000 0,
+      rgba(0, 0, 0, 0.96) 42%,
+      rgba(0, 0, 0, 0.5) 65%,
+      transparent 100%
+    );
+
+  mask-image:
+    radial-gradient(
+      circle var(--sheet-field-radius)
+        at
+        var(--sheet-pointer-x)
+        var(--sheet-pointer-y),
+      #000 0,
+      rgba(0, 0, 0, 0.96) 42%,
+      rgba(0, 0, 0, 0.5) 65%,
+      transparent 100%
+    );
+
+  mix-blend-mode: multiply;
+
+  transition:
+    opacity 220ms ease;
+}
+/* =========================================================
+ * MICRO PAPER GRAIN
+ *
+ * Grain is deliberately separate from the ruling so it cannot
+ * make individual lines look lighter or darker.
+ * ======================================================= */
+
+.page-shell::after {
+  content: "";
+
+  position: absolute;
+  inset: 0;
+
+  z-index: 0;
+
+  pointer-events: none;
+
+  opacity: 0.12;
+
+  background-image:
+    radial-gradient(
+      circle,
+      rgba(35, 31, 26, 0.18) 0 0.35px,
+      transparent 0.5px
+    ),
+    radial-gradient(
+      circle,
+      rgba(255, 255, 255, 0.32) 0 0.35px,
+      transparent 0.5px
+    );
+
+  background-size:
+    8px 8px,
+    13px 13px;
+
+  background-position:
+    0 0,
+    3px 5px;
+
+  mix-blend-mode: multiply;
+}
+
+
+/* Application content sits above the physical surface. */
+
+.page-shell > * {
+  position: relative;
+  z-index: 1;
+}
+
+
+/* =========================================================
+ * PRINT CHARACTER
+ *
+ * Uses currentColor so Sheet, Ink and Glass surfaces retain
+ * their own intended typography colours.
+ * ======================================================= */
+
+.page-shell :where(h1, h2, h3) {
+  text-rendering: geometricPrecision;
+
+  text-shadow:
+    0 0 0.012em currentColor;
+}
+
+.page-shell :where(p, li) {
+  text-rendering: optimizeLegibility;
+
+  text-shadow:
+    0 0 0.006em currentColor;
+}
+
+
+/* =========================================================
+ * DOCUMENT METADATA
+ * ======================================================= */
+
+.page-shell :where(
+  .type-label,
+  .home-work__meta,
+  .home-work__index
+) {
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+
+  text-shadow:
+    0 0 0.005em currentColor;
+}
+
+
+/* =========================================================
+ * SELECTION
+ * ======================================================= */
+
+.page-shell ::selection {
+  background: rgba(166, 69, 60, 0.18);
+  color: inherit;
+}
+
+
+/* =========================================================
+ * MOBILE
+ *
+ * Preserve ruling + faint columns.
+ * Remove the red margin to recover horizontal space.
+ * ======================================================= */
+
+
+  /* =========================================================
+ * MOBILE
+ *
+ * Preserve the ruled sheet and structural grid.
+ * Remove the red research margin on smaller screens.
+ * Reduce grain and print softness for readability.
+ * ======================================================= */
+
+@media (max-width: 767px) {
+  :root {
+   --sheet-pointer-x: 50vw;
+--sheet-pointer-y: 50vh;
+--sheet-pointer-opacity: 0;
+
+--sheet-field-radius: 26rem;
+
+--sheet-field-line: rgba(111, 125, 255, 0.32);
+--sheet-field-column: rgba(111, 125, 255, 0.18);
+--sheet-field-glow: rgba(111, 125, 255, 0.075);
+  }
+
+  .page-shell::after {
+    opacity: 0.09;
+  }
+
+  .page-shell :where(h1, h2, h3) {
+    text-shadow:
+      0 0 0.007em currentColor;
+  }
+
+  .page-shell :where(p, li) {
+    text-shadow: none;
+  }
+}
+
+
+/* =========================================================
+ * GRID CELL MEMORY
+ * ======================================================= */
+
+.sheet-field__trails {
+  position: fixed !important;
+
+  inset: 0;
+
+  z-index: 0 !important;
+
+  width: 100vw;
+  height: 100vh;
+
+  pointer-events: none;
+
+  mix-blend-mode: multiply;
+}
+/* =========================================================
+ * SHEET TELEMETRY
+ * ======================================================= */
+
+.sheet-field__telemetry {
+  position: fixed !important;
+
+  right: 1.15rem;
+  bottom: 1.15rem;
+
+  z-index: 3 !important;
+
+  display: grid;
+
+  gap: 0.32rem;
+
+  min-width: 10rem;
+
+  padding:
+    0.65rem
+    0.75rem;
+
+  border:
+    1px solid
+    rgba(24, 23, 21, 0.11);
+
+  border-radius:
+    var(--radius-md);
+
+  color:
+    rgba(24, 23, 21, 0.48);
+
+  background:
+    rgba(247, 242, 233, 0.68);
+
+  box-shadow:
+    0 8px 28px
+    rgba(24, 23, 21, 0.055);
+
+  backdrop-filter:
+    blur(12px);
+
+  -webkit-backdrop-filter:
+    blur(12px);
+
+  font-family:
+    var(--font-mono);
+
+  font-size:
+    0.55rem;
+
+  line-height:
+    1.35;
+
+  letter-spacing:
+    0.08em;
+
+  text-transform:
+    uppercase;
+
+  pointer-events: none;
+}
+
+.sheet-field__telemetry strong {
+  color:
+    rgba(111, 125, 255, 0.82);
+
+  font-weight: 500;
+}
+
+.sheet-field__telemetry-data {
+  display: flex;
+
+  gap: 0.65rem;
+
+  color:
+    rgba(24, 23, 21, 0.36);
+}
+@media (max-width: 767px), (hover: none), (pointer: coarse) {
+  .page-shell::before,
+  .sheet-field__trails,
+  .sheet-field__telemetry {
+    display: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .page-shell::before,
+  .sheet-field__trails,
+  .sheet-field__telemetry {
+    display: none;
+  }
+}
+
+@media (prefers-reduced-transparency: reduce) {
+  .page-shell::before,
+  .page-shell::after,
+  .sheet-field__trails,
+  .sheet-field__telemetry {
+    display: none;
+  }
+}

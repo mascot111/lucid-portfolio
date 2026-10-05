@@ -27,7 +27,7 @@
 
   --text-primary: var(--ink-base);
   --text-secondary: #5f5a52;
-  --text-muted: #8c8579;
+  --text-muted: #625d55;
   --text-faint: #aaa295;
 
   --text-inverse: #f4efe6;
@@ -54,6 +54,7 @@
    * ===================================================== */
 
   --accent-primary: #6f7dff;
+  --accent-text: #4651b5;
   --accent-primary-soft: rgba(111, 125, 255, 0.12);
 
   --accent-research: #a6453c;

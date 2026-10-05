@@ -1,3 +1,7 @@
+import type { CSSProperties } from "react";
+
+import { Inscription } from "@/components/motion/Inscription";
+
 export const metadata = {
   title: "Contact",
   description:
@@ -50,25 +54,58 @@ export default function ContactPage() {
               Sylvester Kwabena Ahenkorah
             </span>
 
-            <h1>
-              Bring me something
-              <br />
-              worth thinking about.
-            </h1>
+            <Inscription
+              className="contact-hero__title-inscription"
+              duration={2200}
+            >
+              <h1>
+                <span className="contact-hero__line">
+                  <span
+                    className="contact-hero__line-inner"
+                    style={
+                      {
+                        "--contact-line-delay": "0ms",
+                      } as CSSProperties
+                    }
+                  >
+                    Bring me something
+                  </span>
+                </span>
+
+                <span className="contact-hero__line">
+                  <span
+                    className="contact-hero__line-inner"
+                    style={
+                      {
+                        "--contact-line-delay": "320ms",
+                      } as CSSProperties
+                    }
+                  >
+                    worth thinking about.
+                  </span>
+                </span>
+              </h1>
+            </Inscription>
           </div>
 
-          <div className="contact-hero__copy">
-            <p>
-              I&apos;m interested in conversations around intelligent
-              systems, software products, machine learning, research,
-              engineering, and difficult problems that need more than a
-              surface-level solution.
-            </p>
+          <Inscription
+            className="contact-hero__copy-inscription"
+            delay={820}
+            duration={1500}
+          >
+            <div className="contact-hero__copy">
+              <p>
+                I&apos;m interested in conversations around intelligent
+                systems, software products, machine learning, research,
+                engineering, and difficult problems that need more than a
+                surface-level solution.
+              </p>
 
-            <p>
-              If there&apos;s a useful reason for us to talk, reach out.
-            </p>
-          </div>
+              <p>
+                If there&apos;s a useful reason for us to talk, reach out.
+              </p>
+            </div>
+          </Inscription>
         </div>
       </section>
 

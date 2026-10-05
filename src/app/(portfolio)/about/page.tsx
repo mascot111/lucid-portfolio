@@ -1,3 +1,11 @@
+import type { CSSProperties } from "react";
+
+import { Inscription } from "@/components/motion/Inscription";
+
+import { HangingIdentity } from "@/components/about/HangingIdentity";
+
+import { GrowthRecord } from "@/components/about/GrowthRecord";
+
 export const metadata = {
   title: "About",
   description:
@@ -58,25 +66,64 @@ export default function AboutPage() {
               Sylvester Kwabena Ahenkorah
             </span>
 
-            <h1>
-              I&apos;m learning how to make intelligent systems useful.
-            </h1>
+            <Inscription
+              className="about-hero__title-inscription"
+              duration={2200}
+            >
+              <h1>
+                <span className="about-hero__line">
+                  <span
+                    className="about-hero__line-inner"
+                    style={
+                      {
+                        "--about-line-delay": "0ms",
+                      } as CSSProperties
+                    }
+                  >
+                    I&apos;m learning how to make
+                  </span>
+                </span>
+
+                <span className="about-hero__line">
+                  <span
+                    className="about-hero__line-inner"
+                    style={
+                      {
+                        "--about-line-delay": "320ms",
+                      } as CSSProperties
+                    }
+                  >
+                    intelligent systems useful.
+                  </span>
+                </span>
+              </h1>
+            </Inscription>
           </div>
 
-          <div className="about-hero__summary">
-            <p>
-              I&apos;m a Computer Science student building toward Applied AI
-              Engineering and Machine Learning research.
-            </p>
+          <Inscription
+            className="about-hero__summary-inscription"
+            delay={820}
+            duration={1500}
+          >
+            <div className="about-hero__summary">
+              <p>
+                I&apos;m a Computer Science student building toward Applied AI
+                Engineering and Machine Learning research.
+              </p>
 
-            <p>
-              My path into AI has come through actually building software:
-              products, backend systems, interfaces, infrastructure, and
-              technical experiments.
-            </p>
-          </div>
+              <p>
+                My path into AI has come through actually building software:
+                products, backend systems, interfaces, infrastructure, and
+                technical experiments.
+              </p>
+            </div>
+          </Inscription>
         </div>
       </section>
+
+      <HangingIdentity />
+
+      <GrowthRecord />
 
       <section className="about-statement">
         <div className="page-container">

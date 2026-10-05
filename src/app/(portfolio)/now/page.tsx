@@ -1,3 +1,7 @@
+import type { CSSProperties } from "react";
+
+import { Inscription } from "@/components/motion/Inscription";
+
 export const metadata = {
   title: "Now",
   description:
@@ -55,23 +59,56 @@ export default function NowPage() {
         </div>
 
         <div className="now-hero__grid">
-          <h1>
-            What has my
-            <br />
-            attention right now.
-          </h1>
+          <Inscription
+            className="now-hero__title-inscription"
+            duration={2200}
+          >
+            <h1>
+              <span className="now-hero__line">
+                <span
+                  className="now-hero__line-inner"
+                  style={
+                    {
+                      "--now-line-delay": "0ms",
+                    } as CSSProperties
+                  }
+                >
+                  What has my
+                </span>
+              </span>
 
-          <div className="now-hero__copy">
-            <p>
-              This page is a moving snapshot rather than a permanent
-              biography.
-            </p>
+              <span className="now-hero__line">
+                <span
+                  className="now-hero__line-inner"
+                  style={
+                    {
+                      "--now-line-delay": "320ms",
+                    } as CSSProperties
+                  }
+                >
+                  attention right now.
+                </span>
+              </span>
+            </h1>
+          </Inscription>
 
-            <p>
-              It records what I&apos;m actively building, studying, testing,
-              or trying to understand at this point in the journey.
-            </p>
-          </div>
+          <Inscription
+            className="now-hero__copy-inscription"
+            delay={820}
+            duration={1500}
+          >
+            <div className="now-hero__copy">
+              <p>
+                This page is a moving snapshot rather than a permanent
+                biography.
+              </p>
+
+              <p>
+                It records what I&apos;m actively building, studying, testing,
+                or trying to understand at this point in the journey.
+              </p>
+            </div>
+          </Inscription>
         </div>
       </section>
 

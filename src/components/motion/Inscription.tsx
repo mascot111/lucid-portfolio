@@ -8,23 +8,21 @@ import {
   useState,
 } from "react";
 
-type RevealProps = {
+type InscriptionProps = {
   children: ReactNode;
   className?: string;
   delay?: number;
-  direction?: "up" | "down" | "left" | "right" | "none";
-  amount?: number;
+  duration?: number;
   once?: boolean;
 };
 
-export function Reveal({
+export function Inscription({
   children,
   className = "",
   delay = 0,
-  direction = "up",
-  amount = 0.18,
+  duration = 900,
   once = true,
-}: RevealProps) {
+}: InscriptionProps) {
   const ref = useRef<HTMLDivElement>(null);
 
   const [enhanced, setEnhanced] = useState(false);
@@ -37,25 +35,11 @@ export function Reveal({
       return;
     }
 
-    const threshold = Math.min(Math.max(amount, 0), 1,
-      (window.innerHeight * 0.2) / Math.max(node.getBoundingClientRect().height, 1));
-
-    /*
-     * Progressive enhancement:
-     *
-     * Server-rendered content is visible by default.
-     * We only enable hidden/reveal states after React
-     * has successfully mounted this component.
-     */
     setEnhanced(true);
 
     const observer = new IntersectionObserver(
       ([entry]) => {
-        const shouldReveal =
-          entry.isIntersecting &&
-          entry.intersectionRatio >= threshold;
-
-        if (shouldReveal) {
+        if (entry.isIntersecting) {
           setVisible(true);
 
           if (once) {
@@ -70,7 +54,8 @@ export function Reveal({
         }
       },
       {
-        threshold,
+        threshold: Math.min(0.2,
+          (window.innerHeight * 0.2) / Math.max(node.getBoundingClientRect().height, 1)),
       }
     );
 
@@ -79,11 +64,10 @@ export function Reveal({
     return () => {
       observer.disconnect();
     };
-  }, [amount, once]);
+  }, [once]);
 
   const classes = [
-    "motion-reveal",
-    `motion-reveal--${direction}`,
+    "motion-inscription",
     enhanced ? "is-enhanced" : "",
     visible ? "is-visible" : "",
     className,
@@ -97,11 +81,14 @@ export function Reveal({
       className={classes}
       style={
         {
-          "--motion-delay": `${delay}ms`,
+          "--inscription-delay": `${delay}ms`,
+          "--inscription-duration": `${duration}ms`,
         } as CSSProperties
       }
     >
-      {children}
+      <div className="motion-inscription__content">
+        {children}
+      </div>
     </div>
   );
 }

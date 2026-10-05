@@ -1,5 +1,8 @@
+import type { CSSProperties } from "react";
+
 import Link from "next/link";
 
+import { Inscription } from "@/components/motion/Inscription";
 import { mockLabEntries } from "@/lib/projects/mock-lab";
 
 export const metadata = {
@@ -21,24 +24,57 @@ export default function LabPage() {
         </div>
 
         <div className="lab-hero__grid">
-          <h1>
-            Questions worth
-            <br />
-            getting lost in.
-          </h1>
+          <Inscription
+            className="lab-hero__title-inscription"
+            duration={2200}
+          >
+            <h1>
+              <span className="lab-hero__line">
+                <span
+                  className="lab-hero__line-inner"
+                  style={
+                    {
+                      "--lab-line-delay": "0ms",
+                    } as CSSProperties
+                  }
+                >
+                  Questions worth
+                </span>
+              </span>
 
-          <div className="lab-hero__copy">
-            <p>
-              The Lab is where unfinished thinking is allowed to remain
-              visible.
-            </p>
+              <span className="lab-hero__line">
+                <span
+                  className="lab-hero__line-inner"
+                  style={
+                    {
+                      "--lab-line-delay": "320ms",
+                    } as CSSProperties
+                  }
+                >
+                  getting lost in.
+                </span>
+              </span>
+            </h1>
+          </Inscription>
 
-            <p>
-              Models, experiments, research questions, prototypes, failed
-              approaches, and technical investigations live here before they
-              become polished systems — if they ever do.
-            </p>
-          </div>
+          <Inscription
+            className="lab-hero__copy-inscription"
+            delay={820}
+            duration={1500}
+          >
+            <div className="lab-hero__copy">
+              <p>
+                The Lab is where unfinished thinking is allowed to remain
+                visible.
+              </p>
+
+              <p>
+                Models, experiments, research questions, prototypes, failed
+                approaches, and technical investigations live here before they
+                become polished systems — if they ever do.
+              </p>
+            </div>
+          </Inscription>
         </div>
       </section>
 
@@ -50,8 +86,8 @@ export default function LabPage() {
             </span>
 
             <span className="type-label text-muted">
-  Research / Experiments / Concepts
-</span>
+              Research / Experiments / Concepts
+            </span>
           </div>
 
           <div className="lab-index__list">

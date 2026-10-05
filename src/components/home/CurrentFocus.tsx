@@ -1,3 +1,8 @@
+"use client";
+
+import { Inscription } from "@/components/motion/Inscription";
+import { Reveal } from "@/components/motion/Reveal";
+
 const focusItems = [
   {
     label: "Building",
@@ -16,22 +21,53 @@ const focusItems = [
 export function CurrentFocus() {
   return (
     <section className="home-focus page-container">
-      <div className="home-section-label">
-        <span className="type-label">Current Log</span>
-        <span className="type-label text-muted">Live</span>
-      </div>
+      <Reveal
+        className="home-focus__label-reveal"
+        direction="none"
+        amount={0.2}
+      >
+        <div className="home-section-label">
+          <span className="type-label">
+            Current Log
+          </span>
+
+          <span className="type-label text-muted">
+            Live
+          </span>
+        </div>
+      </Reveal>
 
       <div className="home-focus__grid">
-        <div>
-          <h2>What I&apos;m focused on now.</h2>
-        </div>
+        <Inscription
+          className="home-focus__title-inscription"
+          duration={1800}
+        >
+          <h2>
+            What I&apos;m
+            <br />
+            focused on
+            <br />
+            now.
+          </h2>
+        </Inscription>
 
         <div className="home-focus__items">
-          {focusItems.map((item) => (
-            <div className="home-focus__item" key={item.label}>
-              <span className="type-label text-muted">{item.label}</span>
-              <p>{item.value}</p>
-            </div>
+          {focusItems.map((item, index) => (
+            <Reveal
+              className="home-focus__item-reveal"
+              direction="none"
+              delay={index * 180}
+              amount={0.22}
+              key={item.label}
+            >
+              <div className="home-focus__item">
+                <span className="type-label text-muted">
+                  {item.label}
+                </span>
+
+                <p>{item.value}</p>
+              </div>
+            </Reveal>
           ))}
         </div>
       </div>

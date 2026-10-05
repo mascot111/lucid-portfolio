@@ -1,5 +1,8 @@
+import type { CSSProperties } from "react";
+
 import Link from "next/link";
 
+import { Inscription } from "@/components/motion/Inscription";
 import { mockProjects } from "@/lib/projects/mock-projects";
 
 export const metadata = {
@@ -14,25 +17,70 @@ export default function WorkPage() {
       <section className="work-archive__hero page-container">
         <div className="home-section-label">
           <span className="type-label">Archive / Work</span>
+
           <span className="type-label text-muted">
             {String(mockProjects.length).padStart(2, "0")} Entries
           </span>
         </div>
 
         <div className="work-archive__intro">
-          <h1>
-            Things I&apos;ve built,
-            <br />
-            tested, or refused
-            <br />
-            to leave theoretical.
-          </h1>
+          <Inscription
+            className="work-archive__title-inscription"
+            duration={2200}
+          >
+            <h1>
+              <span className="work-archive__line">
+                <span
+                  className="work-archive__line-inner"
+                  style={
+                    {
+                      "--work-line-delay": "0ms",
+                    } as CSSProperties
+                  }
+                >
+                  Things I&apos;ve built,
+                </span>
+              </span>
 
-          <p>
-            Products, intelligent systems, infrastructure, research,
-            operational tools, and experiments across the broader path toward
-            applied AI engineering.
-          </p>
+              <span className="work-archive__line">
+                <span
+                  className="work-archive__line-inner"
+                  style={
+                    {
+                      "--work-line-delay": "280ms",
+                    } as CSSProperties
+                  }
+                >
+                  tested, or refused
+                </span>
+              </span>
+
+              <span className="work-archive__line">
+                <span
+                  className="work-archive__line-inner"
+                  style={
+                    {
+                      "--work-line-delay": "560ms",
+                    } as CSSProperties
+                  }
+                >
+                  to leave theoretical.
+                </span>
+              </span>
+            </h1>
+          </Inscription>
+
+          <Inscription
+            className="work-archive__description-inscription"
+            delay={900}
+            duration={1500}
+          >
+            <p>
+              Products, intelligent systems, infrastructure, research,
+              operational tools, and experiments across the broader path toward
+              applied AI engineering.
+            </p>
+          </Inscription>
         </div>
       </section>
 
